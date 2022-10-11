@@ -14,7 +14,7 @@ import Home from './Home'
 import TVShows from './TVShows';
 function App() {
   return (
-    <div className="App">
+    <div className="App">   
       <Router>
         <Navbar />
 

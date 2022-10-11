@@ -1,24 +1,36 @@
-.navContainer{
+.navContainer {
   background-color: black;
   color: white;
   padding: 20px;
 }
-.heading{
-    font-size: 30px;
-    /* margin-left: 30px; */
-    cursor: pointer;
+.heading {
+  font-size: 30px;
+  /* margin-left: 30px; */
+  cursor: pointer;
 }
-.navLinkContainer{
-    text-align: right;
+.navLinkContainer {
+  text-align: right;
 }
-.navLinks{
-   text-decoration: none;
-   margin-right: 30px;
-   color: white;
+.navLinks {
+  text-decoration: none;
+  margin-right: 30px;
+  color: white;
 }
-.navLinks:hover{
+.navLinks:hover {
   color: red;
   border-bottom: 5px solid blue;
   /* transition-delay: 0.5s; */
   /* border-color: blue; */
+}
+
+@media screen and (max-width: 700px) {
+  .heading {
+    font-size: 20px;
+  }
+  .navLinks{
+    margin-right: 10px;
+  }
+  .navLinkContainer{
+    margin-top: 10px;
+  }
 }

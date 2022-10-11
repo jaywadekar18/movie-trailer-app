@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import styles from './styles/navbar.module.css'
 function Navbar() {
   let navigate = useNavigate()
-  return (
+  return (   
     <div className={styles.navContainer}>
       <span className={styles.heading} onClick={()=>navigate('/home')}>The Movie Stop 🎥</span>
       <div className={styles.navLinkContainer}>

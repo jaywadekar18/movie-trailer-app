@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import CardSlider from './CardSlider.js'
+import styles from './styles/slider.module.css'
 function Slider({ content }) {
     const navigate = useNavigate();
     const [data, setData] = useState([])
@@ -25,10 +26,11 @@ function Slider({ content }) {
 
     }
     return (
-        <>
-        <h1>{content?.title}</h1>
-        {data && data.length>0 && <CardSlider cardData={data}/>}
-            {/* <div className={styles.container}>
+        <div>
+        <p className={styles.heading}>{content?.title}</p>
+        {data && data.length>0 && window.innerWidth > 700 && <CardSlider cardData={data}/>}
+        {data && data.length>0 && window.innerWidth <= 700 && 
+             <div className={styles.container}>
 
                 {
                     data?.map(content =>
@@ -41,8 +43,9 @@ function Slider({ content }) {
                     )
                 }
 
-            </div> */}
-        </>
+            </div> 
+        }
+        </div>
     )
 }
 

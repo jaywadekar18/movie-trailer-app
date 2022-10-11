@@ -1,11 +1,11 @@
 .card {
-    height: 450px;
-    width: 350px;
-    border-radius: 10px;
+  height: 450px;
+  width: 350px;
+  border-radius: 10px;
 }
 .drop {
   height: 100%;
-  
+
   display: flex;
   background-color: rgba(0, 0, 0, 0.6);
   justify-content: flex-start;
@@ -30,14 +30,38 @@ iframe {
   width: 100%;
   height: 100%;
 }
-.title{
-    font-size: 35px;
+.title {
+  font-size: 35px;
 }
-.trailerBtn{
-     border-radius: 10px;
-     padding: 10px;
-     background-color: red;
-     color: white;
-     cursor: pointer;
-     font-size: 18px;
+.trailerBtn {
+  border-radius: 10px;
+  padding: 10px;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+@media screen and (max-width: 700px) {
+  .title {
+    font-size: 20px;
+  }
+  .drop {
+    padding-left: unset;
+    display: unset;
+  }
+  .contentContainer {
+    text-align: center;
+  }
+  .card {
+    height: 350px;
+    width: 250px;
+    margin-top: 50px;
+  }
+  .contentData {
+    text-align: center;
+  }
+  .posterImg {
+    margin-top: 30px;
+  }
 }

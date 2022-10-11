@@ -30,17 +30,17 @@ function ContentDetail() {
     }
     return (
         <div className={style.contentContainer} style={{ backgroundImage: `url(${process.env.REACT_APP_BACKDROP_PATH + mediaData.backdrop_path})` }}>
-        <div className={style.drop}>
-            <img src={process.env.REACT_APP_BACKDROP_PATH + mediaData?.poster_path} className={style.card} />
-            <div>
-            <p className={style.title} >{mediaData.original_name ?? mediaData.original_title}</p>
-            <button className={style.trailerBtn} onClick={() => { setShowModal(true) }}>Watch trailer</button>
-            </div>
+            <div className={style.drop}>
+                <img  src={process.env.REACT_APP_BACKDROP_PATH + mediaData?.poster_path} className={style.card} />
+                <div className={style.contentData}>
+                    <p className={style.title} >{mediaData.original_name ?? mediaData.original_title}</p>
+                    <button className={style.trailerBtn} onClick={() => { setShowModal(true) }}>Watch trailer</button>
+                </div>
 
-            {
-                showModal && <Modal setShowModal={setShowModal} trailerId={trailerId} />
-            }
-</div>
+                {
+                    showModal && <Modal setShowModal={setShowModal} trailerId={trailerId} />
+                }
+            </div>
         </div>
     )
 }
