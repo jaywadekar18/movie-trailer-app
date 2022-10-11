@@ -1,0 +1,24 @@
+.navContainer{
+  background-color: black;
+  color: white;
+  padding: 20px;
+}
+.heading{
+    font-size: 30px;
+    /* margin-left: 30px; */
+    cursor: pointer;
+}
+.navLinkContainer{
+    text-align: right;
+}
+.navLinks{
+   text-decoration: none;
+   margin-right: 30px;
+   color: white;
+}
+.navLinks:hover{
+  color: red;
+  border-bottom: 5px solid blue;
+  /* transition-delay: 0.5s; */
+  /* border-color: blue; */
+}

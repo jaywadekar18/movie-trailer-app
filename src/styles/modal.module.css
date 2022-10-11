@@ -1,0 +1,24 @@
+.modal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background: rgb(35 35 35 / 83%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modalContent {
+  background-color: black !important;
+    width: 800px;
+    height: 500px;
+    background-color: white;
+    text-align: right;
+}
+.closeBtn{
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
+}

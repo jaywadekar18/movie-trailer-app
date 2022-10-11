@@ -1,0 +1,22 @@
+.container {
+  height: 400px;
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  row-gap: 15px;
+  column-gap: 30px;
+}
+
+.card {
+  height: 350px;
+  width: 200px;
+  border: 0.5px solid black;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 0 20px;
+}
+
+.cardImage {
+  
+  height: 100%;
+}

@@ -1,0 +1,23 @@
+.container{
+    display: flex;
+    row-gap: 15px;
+    column-gap: 30px;
+    flex-wrap: wrap;
+    background-color: black;
+    justify-content: center;
+}
+.dropdown{
+    text-align: right;
+    margin: 25px;
+}
+.select{
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 10px;
+}
+.pageBtnContainer{
+    text-align: center;
+}
+.pageBtnContainer button{
+    margin: 10px;
+}
