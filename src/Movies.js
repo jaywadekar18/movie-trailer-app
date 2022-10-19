@@ -4,16 +4,20 @@ import Movie from './Movie';
 import styles from './styles/movies.module.css'
 
 import loader from './images/loader.gif'
-
+const NO_OF_PAGE_TO_SHOW = 2
 function Movies() {
     const [movies, setMovies] = useState([]);
     const [sort, setSort] = useState('popular');
-    const [page, setPage] = useState(1)
+    const [page, setPage] = useState(1);
+    const [pageArray, setPageArray] = useState(Array(5).fill(1).map((_, x) => x + 1))
     useEffect(() => {
         fetchMovies();
-        console.log('t565656');
-    }, [sort, page])
 
+    }, [sort, page])
+    function showNextButtons() {
+        if (pageArray.at(pageArray.length - 1) + NO_OF_PAGE_TO_SHOW > movies?.total_pages) return;
+        setPageArray(arr => arr.map(ele => ele + NO_OF_PAGE_TO_SHOW))
+    }
     async function fetchMovies() {
         console.log('fds');
         let { data } = await axios.get(process.env.REACT_APP_BASE_API + process.env.REACT_APP_MOVIE + `/${sort}`, {
@@ -24,8 +28,8 @@ function Movies() {
             }
         });
         setMovies(data.results);
-
     }
+
     return (
         <div >
             <div className={styles.dropdown}>
@@ -41,19 +45,19 @@ function Movies() {
 
                 {movies?.length > 0 ? movies.map(movie =>
                     <Movie key={movie.id} movie={movie} />
-                ) : <img src={loader}/>}
+                ) : <img src={loader} />}
 
 
             </div>
             <div className={styles.pageBtnContainer}>
-                <button onClick={() => setPage(1)}>1</button>
-                <button onClick={() => setPage(2)}>2</button>
-                <button onClick={() => setPage(3)}>3</button>
-                <button onClick={() => setPage(4)}>4</button>
-                <button onClick={() => setPage(5)}>5</button>
+                {
+                    pageArray && pageArray.map(pageNo =>
+                        <button key={pageNo} onClick={() => setPage(pageNo)}>{pageNo}</button>)
+                }
+                <button onClick={showNextButtons}>Next</button>
             </div>
 
-            
+
         </div>
     )
 }

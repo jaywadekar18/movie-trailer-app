@@ -1,0 +1,27 @@
+.imageContainer {
+  height: 500px;
+  width: 90%;
+  position: relative;
+  margin: auto;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+}
+
+.leftBtn {
+  position: absolute;
+  left: 0;
+  top: 50%;
+}
+
+.rightBtn {
+  position: absolute;
+  right: 0;
+  top: 50%;
+}
+
+@media screen and (max-width: 700px) {
+  .imageContainer {
+    height: 200px;
+  }
+}

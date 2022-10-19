@@ -11,19 +11,22 @@
 }
 .modalContent {
   background-color: black !important;
-    width: 800px;
-    height: 500px;
-    background-color: white;
-    text-align: right;
+  width: 800px;
+  height: 500px;
+  background-color: white;
+  text-align: right;
 }
-.closeBtn{
+.closeBtn {
   background-color: black;
   color: white;
   cursor: pointer;
   font-size: 20px;
 }
-
-@media screen and (max-width:700px) {
+.modal iframe {
+  width: 100%;
+  height: 100%;
+}
+@media screen and (max-width: 700px) {
   .modalContent {
     width: 95%;
     height: 300px;

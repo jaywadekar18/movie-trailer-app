@@ -14,20 +14,21 @@ import Home from './Home'
 import TVShows from './TVShows';
 function App() {
   return (
-    <div className="App">   
+    <div className="App">
       <Router>
         <Navbar />
 
 
         <Routes>
+          <Route exact path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
 
           <Route path="/movies" element={<Movies />} />
           <Route path="/tvshows" element={<TVShows />} />
           <Route path="/content-detail/:type/:id" element={<MovieDetail />} />
 
+          <Route path='/search/:keyword' />
 
-          <Route path="/" element={<Home />} />
 
 
         </Routes>

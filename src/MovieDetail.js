@@ -11,37 +11,77 @@ function ContentDetail() {
 
     useEffect(() => {
         fetchContentDetail();
-    }, [])
+        window.scrollTo(0, 0)
+    }, [id])
     async function fetchContentDetail() {
         const { data } = await axios.get(process.env.REACT_APP_BASE_API + type + `/${id}`, {
             params: {
                 api_key: process.env.REACT_APP_API_KEY,
-                append_to_response: "videos"
+                append_to_response: "videos,credits",
+
             }
         })
 
-        let trailer = data?.videos?.results?.find(video => video.name === "Official Trailer");
+        let trailer = data?.videos?.results?.filter(video => video.name.includes("Official Trailer"));
+
+
+        console.log("trailer", trailer);
 
         setMediaData(data)
         if (trailer) {
-            setTrailerId(trailer.key);
+            setTrailerId(trailer[0].key);
         }
 
     }
     return (
-        <div className={style.contentContainer} style={{ backgroundImage: `url(${process.env.REACT_APP_BACKDROP_PATH + mediaData.backdrop_path})` }}>
-            <div className={style.drop}>
-                <img  src={process.env.REACT_APP_BACKDROP_PATH + mediaData?.poster_path} className={style.card} />
+        <>
+            <section className={style.contentContainer} style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.75)),url(${process.env.REACT_APP_BACKDROP_PATH + mediaData.backdrop_path})` }}>
+                {/* <div className={style.drop}> */}
+                <img src={process.env.REACT_APP_BACKDROP_PATH + mediaData?.poster_path} className={style.card} />
                 <div className={style.contentData}>
                     <p className={style.title} >{mediaData.original_name ?? mediaData.original_title}</p>
-                    <button className={style.trailerBtn} onClick={() => { setShowModal(true) }}>Watch trailer</button>
+                    {trailerId && <button className={style.trailerBtn} onClick={() => { setShowModal(true) }}>Watch trailer</button>}
+                    {window.innerWidth > 1 && <div className={style.creditsSection}>
+
+
+                        {mediaData?.credits?.cast?.slice(0, 5)
+                            .map((person) => <div className={style.person} key={person.id}>
+                                <img className={style.personImg} src={process.env.REACT_APP_BACKDROP_PATH + person?.profile_path} />
+                                <p className={style.personName}>{person.name}</p></div>)}
+                    </div>}
                 </div>
 
                 {
                     showModal && <Modal setShowModal={setShowModal} trailerId={trailerId} />
                 }
-            </div>
-        </div>
+                {/* </div> */}
+
+
+
+
+            </section>
+            {
+                mediaData?.videos?.results?.length > 0 &&
+
+                <section >
+
+
+                    <p className={style.sectionHeading}>Related Videos</p>
+                    <div className={style.relatedVideosSection}>
+
+
+                        {
+
+                            mediaData?.videos?.results?.slice(0, 4).map(video =>
+                                <iframe frameBorder="0" src={`https://www.youtube.com/embed/${video.key}`} allowFullScreen> </iframe>)
+
+
+                        }
+                    </div>
+                </section>
+            }
+
+        </>
     )
 }
 
