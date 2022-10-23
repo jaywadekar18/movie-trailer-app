@@ -2,7 +2,8 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import CardSlider from './CardSlider.js'
-import styles from './styles/slider.module.css'
+import styles from './styles/slider.module.css';
+import loader from './images/loader.gif'
 function Slider({ content }) {
     const navigate = useNavigate();
     const [data, setData] = useState([])
@@ -27,24 +28,25 @@ function Slider({ content }) {
     }
     return (
         <div>
-        <p className={styles.heading}>{content?.title}</p>
-        {data && data.length>0 && window.innerWidth > 700 && <CardSlider cardData={data}/>}
-        {data && data.length>0 && window.innerWidth <= 700 && 
-             <div className={styles.container}>
+            <p className={styles.heading}>{content?.title}</p>
+            {data && data.length > 0 && window.innerWidth > 700 && <CardSlider cardData={data} />}
+            {data && data.length > 0 && window.innerWidth <= 700 &&
+                <div className={styles.container}>
 
-                {
-                    data?.map(content =>
-                        <div className={styles.card} onClick={() => {
-                            navigate(`/content-detail/${content.first_air_date === undefined ? 'movie' : 'tv'}/${content.id}`)
-                        }}>
-                        
-                            <img className={styles.cardImage} src={process.env.REACT_APP_BACKDROP_PATH + content.poster_path} alt="" />
-                        </div>
-                    )
-                }
+                    {
+                        (data && data.length > 0) ? data?.map(content =>
+                            <div className={styles.card} onClick={() => {
+                                navigate(`/content-detail/${content.first_air_date === undefined ? 'movie' : 'tv'}/${content.id}`)
+                            }}>
 
-            </div> 
-        }
+                                <img className={styles.cardImage} src={process.env.REACT_APP_BACKDROP_PATH + content.poster_path} alt="" />
+                            </div>
+                        )
+                            : <img src={loader} />
+                    }
+
+                </div>
+            }
         </div>
     )
 }

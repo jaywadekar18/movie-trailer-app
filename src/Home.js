@@ -428,7 +428,7 @@ function Home() {
   ]
   return (
     <div>
-    <ImageSlider images={data}/>
+    <ImageSlider images={data} dataSize={data.length}/>
       {contentList.map(content => {
         return <Slider content={content} key={content.id}/>
       })}

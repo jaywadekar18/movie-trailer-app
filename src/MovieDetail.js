@@ -35,20 +35,24 @@ function ContentDetail() {
     }
     return (
         <>
-            <section className={style.contentContainer} style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.75)),url(${process.env.REACT_APP_BACKDROP_PATH + mediaData.backdrop_path})` }}>
+            <section className={style.contentContainer}
+                style={{
+                    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 1))
+            ,url(${window.innerWidth> 700? (process.env.REACT_APP_BACKDROP_PATH + mediaData.backdrop_path) : (process.env.REACT_APP_BACKDROP_PATH_500 + mediaData.poster_path ) })`
+                }}>
                 {/* <div className={style.drop}> */}
                 <img src={process.env.REACT_APP_BACKDROP_PATH + mediaData?.poster_path} className={style.card} />
                 <div className={style.contentData}>
                     <p className={style.title} >{mediaData.original_name ?? mediaData.original_title}</p>
                     {trailerId && <button className={style.trailerBtn} onClick={() => { setShowModal(true) }}>Watch trailer</button>}
-                    {window.innerWidth > 1 && <div className={style.creditsSection}>
+                    <div className={style.creditsSection}>
 
 
                         {mediaData?.credits?.cast?.slice(0, 5)
                             .map((person) => <div className={style.person} key={person.id}>
                                 <img className={style.personImg} src={process.env.REACT_APP_BACKDROP_PATH + person?.profile_path} />
                                 <p className={style.personName}>{person.name}</p></div>)}
-                    </div>}
+                    </div>
                 </div>
 
                 {

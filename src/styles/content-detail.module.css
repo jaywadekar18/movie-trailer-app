@@ -96,10 +96,13 @@
   .creditsSection{
     max-width: 100vw;
     /* overflow-x: auto; */
-    overflow-x: scroll 
+    overflow-x: scroll ;
+    overflow-y: hidden;
   }
   .relatedVideosSection {
     justify-content: center;
   }
-  
+  .personImg{
+    height: 70%;
+  }
 }

@@ -12,28 +12,21 @@ import MovieDetail from './MovieDetail';
 import Navbar from './Navbar'
 import Home from './Home'
 import TVShows from './TVShows';
+import Search from './Search';
 function App() {
   return (
     <div className="App">
       <Router>
         <Navbar />
-
-
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
-
           <Route path="/movies" element={<Movies />} />
           <Route path="/tvshows" element={<TVShows />} />
           <Route path="/content-detail/:type/:id" element={<MovieDetail />} />
-
-          <Route path='/search/:keyword' />
-
-
-
+          <Route path="/search/:keyword" element={<Search />} />
+       
         </Routes>
-
-
       </Router>
       <footer>
         Made with ❤️ in India
