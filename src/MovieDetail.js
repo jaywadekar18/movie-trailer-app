@@ -38,9 +38,11 @@ function ContentDetail() {
             <section className={style.contentContainer}
                 style={{
                     backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 1))
-            ,url(${window.innerWidth> 700? (process.env.REACT_APP_BACKDROP_PATH + mediaData.backdrop_path) : (process.env.REACT_APP_BACKDROP_PATH_500 + mediaData.poster_path ) })`
+                         ,url(${window.innerWidth > 700 ?
+                            (process.env.REACT_APP_BACKDROP_PATH + mediaData.backdrop_path) :
+                            (process.env.REACT_APP_BACKDROP_PATH_500 + mediaData.poster_path)})`
                 }}>
-                {/* <div className={style.drop}> */}
+          
                 <img src={process.env.REACT_APP_BACKDROP_PATH + mediaData?.poster_path} className={style.card} />
                 <div className={style.contentData}>
                     <p className={style.title} >{mediaData.original_name ?? mediaData.original_title}</p>
@@ -58,9 +60,6 @@ function ContentDetail() {
                 {
                     showModal && <Modal setShowModal={setShowModal} trailerId={trailerId} />
                 }
-                {/* </div> */}
-
-
 
 
             </section>
