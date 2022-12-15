@@ -7,12 +7,12 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import Movies from './Movies';
-import MovieDetail from './MovieDetail';
-import Navbar from './Navbar'
-import Home from './Home'
-import TVShows from './TVShows';
-import Search from './Search';
+import Movies from '../src/Pages/Movies';
+import MovieDetail from '../src/Pages/MovieDetail';
+import Navbar from '../src/Components/Navbar'
+import Home from '../src/Pages/Home'
+import TVShows from '../src/Pages/TVShows';
+import Search from '../src/Pages/Search';
 function App() {
   return (
     <div className="App">

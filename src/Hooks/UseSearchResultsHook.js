@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import * as Constants from './api/endPoints'
+import * as Constants from '../api/endPoints'
 function UseSearchResultsHook(query, page) {
     const [list, setList] = useState();
     const [error, setError] = useState(false);

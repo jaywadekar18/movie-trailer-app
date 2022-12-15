@@ -1,7 +1,10 @@
+.mainContainer{
+    position: relative;
+    overflow-x: hidden;
+}
 .cardContainer{
-   
     display: flex;
-    justify-content: center;
+    transition: transform 1s;
 }
 .card{
     cursor: pointer;
@@ -13,8 +16,21 @@
     width: 100%;
     height: 100%;
 }
-button{
+.sliderButtonsLeft{
     background-color: black;
     color: white;
     cursor: pointer;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    z-index: 1;
+}
+.sliderButtonsRight{
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    z-index: 1;
 }

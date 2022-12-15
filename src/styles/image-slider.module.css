@@ -6,18 +6,26 @@
   background-repeat: no-repeat;
   background-position: center center;
   background-size: contain;
+  transition: 1s ease-in-out;
+  background-repeat: no-repeat;
 }
 
 .leftBtn {
   position: absolute;
   left: 0;
   top: 50%;
+  background-color: black;
+  color: white;
+  cursor: pointer;
 }
 
 .rightBtn {
   position: absolute;
   right: 0;
   top: 50%;
+  background-color: black;
+  color: white;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 700px) {

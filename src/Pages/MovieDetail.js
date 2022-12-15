@@ -1,9 +1,9 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
-import Modal from './Modal';
-import style from './styles/content-detail.module.css'
-import * as Constants from './api/endPoints'
+import Modal from '../Components/Modal';
+import style from '../styles/content-detail.module.css'
+import * as Constants from '../api/endPoints'
 function ContentDetail() {
     let { id, type } = useParams();
     const [trailerId, setTrailerId] = useState(null);

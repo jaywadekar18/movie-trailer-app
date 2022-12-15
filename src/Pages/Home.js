@@ -1,7 +1,7 @@
 import React from 'react'
 
-import Slider from './Slider'
-import ImageSlider from './ImageSlider'
+import Slider from '../Components/Slider'
+import ImageSlider from '../Components/ImageSlider'
 
 function Home() {
   let contentList = [

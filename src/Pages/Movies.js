@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import axios from "axios";
-import Movie from './Movie';
-import styles from './styles/movies.module.css'
-import * as Constants from './api/endPoints'
-import loader from './images/loader.gif'
+import Movie from '../Components/Movie';
+import styles from '../styles/movies.module.css'
+import * as Constants from '../api/endPoints'
+import loader from '../images/loader.gif'
 const NO_OF_PAGE_TO_SHOW = 2
 function Movies() {
     const [movies, setMovies] = useState([]);

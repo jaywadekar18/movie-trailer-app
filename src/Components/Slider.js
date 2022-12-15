@@ -1,15 +1,16 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom';
 import CardSlider from './CardSlider.js'
-import styles from './styles/slider.module.css';
-import loader from './images/loader.gif'
-import * as Constants from './api/endPoints'
+import styles from '../styles/slider.module.css';
+import loader from '../images/loader.gif'
+import * as Constants from '../api/endPoints'
 function Slider({ content }) {
     const navigate = useNavigate();
-    const [data, setData] = useState([])
+    const [data, setData] = useState([]);
     useEffect(() => {
-        fetchData()
+        fetchData();
+
     }, [])
     async function fetchData() {
         let { data } = await axios.get(Constants.API.baseApi + `${content?.contentType === 'tv' ? "tv" : 'movie'}` + `/${content?.category}`, {
@@ -22,6 +23,8 @@ function Slider({ content }) {
         setData(data.results);
 
     }
+    
+
     return (
         <div>
             <p className={styles.heading}>{content?.title}</p>

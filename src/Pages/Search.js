@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react'
-import UseSearchResultsHook from './UseSearchResultsHook';
-import styles from './styles/search.module.css';
-import Movie from './Movie';
+import UseSearchResultsHook from '../Hooks/UseSearchResultsHook';
+import styles from '../styles/search.module.css';
+import Movie from '../Components/Movie';
 import { useParams } from 'react-router';
-import loader from './images/loader.gif'
+import loader from '../images/loader.gif'
 function Search() {
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);

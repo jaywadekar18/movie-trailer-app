@@ -1,10 +1,10 @@
 import axios from 'axios';
 import React, { useState, useEffect, useRef, useCallback } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import styles from './styles/navbar.module.css'
+import styles from '../styles/navbar.module.css'
 import { FaSearch } from "react-icons/fa";
-import MovieImg from './images/MovieImg.jpg'
-import * as Constants from './api/endPoints'
+import MovieImg from '../images/MovieImg.jpg'
+import * as Constants from '../api/endPoints'
 const RESULT_COUNT_SHOWN = 5
 function Navbar() {
   let navigate = useNavigate();
