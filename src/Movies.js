@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from "axios";
 import Movie from './Movie';
 import styles from './styles/movies.module.css'
-
+import * as Constants from './api/endPoints'
 import loader from './images/loader.gif'
 const NO_OF_PAGE_TO_SHOW = 2
 function Movies() {
@@ -20,7 +20,7 @@ function Movies() {
     }
     async function fetchMovies() {
         console.log('fds');
-        let { data } = await axios.get(process.env.REACT_APP_BASE_API + process.env.REACT_APP_MOVIE + `/${sort}`, {
+        let { data } = await axios.get(Constants.API.baseApi + Constants.CATEGORY.movie + `/${sort}`, {
             params: {
                 api_key: process.env.REACT_APP_API_KEY,
                 page: page

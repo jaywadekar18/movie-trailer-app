@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import styles from './styles/image-slider.module.css';
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import * as Constants from './api/endPoints'
 function ImageSlider({ images, dataSize }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [myState, setMyState] = useState(0)
@@ -31,7 +32,7 @@ function ImageSlider({ images, dataSize }) {
       {
         images && images.length > 0 &&
 
-        <div className={styles.imageContainer} style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w1280/${images[currentIndex]?.backdrop_path})` }} >
+        <div className={styles.imageContainer} style={{ backgroundImage: `url(${Constants.API.imageWeb +images[currentIndex]?.backdrop_path})` }} >
           <button className={styles.leftBtn} onClick={decrement}><FaChevronLeft /></button>
           <button className={styles.rightBtn} onClick={increment}><FaChevronRight /></button>
         </div>

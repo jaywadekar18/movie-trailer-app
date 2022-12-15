@@ -4,19 +4,15 @@ import { useNavigate } from 'react-router-dom';
 import CardSlider from './CardSlider.js'
 import styles from './styles/slider.module.css';
 import loader from './images/loader.gif'
+import * as Constants from './api/endPoints'
 function Slider({ content }) {
     const navigate = useNavigate();
     const [data, setData] = useState([])
     useEffect(() => {
-
-        console.log("useeefect");
-
         fetchData()
-
-
     }, [])
     async function fetchData() {
-        let { data } = await axios.get(process.env.REACT_APP_BASE_API + `${content?.contentType === 'tv' ? "tv" : 'movie'}` + `/${content?.category}`, {
+        let { data } = await axios.get(Constants.API.baseApi + `${content?.contentType === 'tv' ? "tv" : 'movie'}` + `/${content?.category}`, {
             params: {
                 api_key: process.env.REACT_APP_API_KEY,
 
@@ -39,7 +35,7 @@ function Slider({ content }) {
                                 navigate(`/content-detail/${content.first_air_date === undefined ? 'movie' : 'tv'}/${content.id}`)
                             }}>
 
-                                <img className={styles.cardImage} src={process.env.REACT_APP_BACKDROP_PATH + content.poster_path} alt="" />
+                                <img className={styles.cardImage} src={Constants.API.imageWeb + content.poster_path} alt="" />
                             </div>
                         )
                             : <img src={loader} />

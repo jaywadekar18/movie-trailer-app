@@ -16,14 +16,11 @@ export const TVTYPE = {
     on_the_air: 'on_the_air'
 }
 
-const API = {
+export const API = {
     baseApi: 'https://api.themoviedb.org/3/',
     imageApi: 'https://image.tmdb.org/t/p/',
-    search: this.baseApi + 'search/',
-    discover: this.baseApi + 'discover/',
-    imageWeb: this.imageApi + 'w1280',
-    imageMobile: this.imageApi + 'w500',
-
+    search: 'https://api.themoviedb.org/3/search/',
+    discover: 'https://api.themoviedb.org/3/discover/',
+    imageWeb: 'https://image.tmdb.org/t/p/w1280',
+    imageMobile: 'https://image.tmdb.org/t/p/w500'
 }
-
-export default API;

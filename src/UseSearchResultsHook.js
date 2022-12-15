@@ -1,20 +1,21 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import * as Constants from './api/endPoints'
 function UseSearchResultsHook(query, page) {
     const [list, setList] = useState();
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(false);
     function fetchData() {
-        let cancel
-        let movieData = axios.get(process.env.REACT_APP_BASE_API + 'search/' + 'movie', {
+       
+        let movieData = axios.get(Constants.API.search + Constants.CATEGORY.movie, {
             params: {
                 api_key: process.env.REACT_APP_API_KEY,
                 query,
                 page
             },
-            cancelToken: new axios.CancelToken(c => cancel = c)
+           
         });
-        let tvData = axios.get(process.env.REACT_APP_BASE_API + 'search/' + 'tv', {
+        let tvData = axios.get(Constants.API.search + Constants.CATEGORY.tv, {
             params: {
                 api_key: process.env.REACT_APP_API_KEY,
                 query,
@@ -46,7 +47,7 @@ function UseSearchResultsHook(query, page) {
             }, []);
             console.log(results);
             setList(prev => [...prev, ...results])
-        }).catch(err => { if (axios.isCancel(err)) return; console.log(err); setError(error) })
+        }).catch(err => { console.log(err); setError(error) })
 
     }, [query, page])
     return { list, error ,loading }

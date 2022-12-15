@@ -3,6 +3,7 @@ import UseSearchResultsHook from './UseSearchResultsHook';
 import styles from './styles/search.module.css';
 import Movie from './Movie';
 import { useParams } from 'react-router';
+import loader from './images/loader.gif'
 function Search() {
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);
@@ -30,14 +31,6 @@ function Search() {
     },
     [loading]
   )
-
-
-  useEffect(() => {
-
-    console.log('lidt', list);
-
-  }, [list])
-
   return (
     <main >
       {/* <input value={query} onChange={(e) => { setQuery(e.target.value) }} placeholder="Search" /> */}
@@ -59,13 +52,15 @@ function Search() {
 
           })
         }
+      </div>
+      <div style={{ textAlign: "center" }}>
         {
-          loading && <div>Loading</div>
-        }
-        {
-          error && <div>Error</div>
+          loading && <img src={loader} />
         }
       </div>
+      {
+        error && <div>Error</div>
+      }
     </main>
   )
 }

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styles from './styles/card-slider.module.css'
 import { useNavigate } from 'react-router-dom';
 import { FaChevronLeft , FaChevronRight} from "react-icons/fa";
+import * as Constants from './api/endPoints'
 let NO_OF_CARDS_TO_BE_SHOWN = 8
 let NO_OF_NEXT_CARDS = 3
 function CardSlider({ cardData }) {
@@ -47,7 +48,7 @@ function CardSlider({ cardData }) {
                 shownCards && shownCards.map(card => <div key={card.id}>
                     <div className={styles.card} onClick={()=>navigate(`/content-detail/${card.first_air_date === undefined ? 'movie' : 'tv'}/${card.id}`)} >
                         <img className={styles.cardImage}
-                            src={process.env.REACT_APP_BACKDROP_PATH + card.poster_path}
+                            src={Constants.API.imageWeb + card.poster_path}
                             alt="image" />
 
                     </div>

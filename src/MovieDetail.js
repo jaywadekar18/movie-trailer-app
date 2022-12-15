@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import Modal from './Modal';
 import style from './styles/content-detail.module.css'
+import * as Constants from './api/endPoints'
 function ContentDetail() {
     let { id, type } = useParams();
     const [trailerId, setTrailerId] = useState(null);
@@ -14,7 +15,7 @@ function ContentDetail() {
         window.scrollTo(0, 0)
     }, [id])
     async function fetchContentDetail() {
-        const { data } = await axios.get(process.env.REACT_APP_BASE_API + type + `/${id}`, {
+        const { data } = await axios.get(Constants.API.baseApi + type + `/${id}`, {
             params: {
                 api_key: process.env.REACT_APP_API_KEY,
                 append_to_response: "videos,credits",
@@ -39,11 +40,11 @@ function ContentDetail() {
                 style={{
                     backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 1))
                          ,url(${window.innerWidth > 700 ?
-                            (process.env.REACT_APP_BACKDROP_PATH + mediaData.backdrop_path) :
-                            (process.env.REACT_APP_BACKDROP_PATH_500 + mediaData.poster_path)})`
+                            (Constants.API.imageWeb + mediaData.backdrop_path) :
+                            (Constants.API.imageMobile + mediaData.poster_path)})`
                 }}>
           
-                <img src={process.env.REACT_APP_BACKDROP_PATH + mediaData?.poster_path} className={style.card} />
+                <img src={Constants.API.imageWeb + mediaData?.poster_path} className={style.card} />
                 <div className={style.contentData}>
                     <p className={style.title} >{mediaData.original_name ?? mediaData.original_title}</p>
                     {trailerId && <button className={style.trailerBtn} onClick={() => { setShowModal(true) }}>Watch trailer</button>}
@@ -52,7 +53,7 @@ function ContentDetail() {
 
                         {mediaData?.credits?.cast?.slice(0, 5)
                             .map((person) => <div className={style.person} key={person.id}>
-                                <img className={style.personImg} src={process.env.REACT_APP_BACKDROP_PATH + person?.profile_path} />
+                                <img className={style.personImg} src={Constants.API.imageWeb + person?.profile_path} />
                                 <p className={style.personName}>{person.name}</p></div>)}
                     </div>
                 </div>

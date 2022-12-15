@@ -2,7 +2,6 @@ import React from 'react'
 import styles from './styles/modal.module.css';
 import { AiOutlineClose } from "react-icons/ai";
 function Modal({ setShowModal, trailerId }) {
-    console.log(setShowModal);
     return (
         <div className={styles.modal} onClick={()=>{setShowModal(false)}}>
             <div className={styles.modalContent} onClick={(e)=>{e.stopPropagation()}} >

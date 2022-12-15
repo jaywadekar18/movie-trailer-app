@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import styles from './styles/navbar.module.css'
 import { FaSearch } from "react-icons/fa";
 import MovieImg from './images/MovieImg.jpg'
+import * as Constants from './api/endPoints'
 const RESULT_COUNT_SHOWN = 5
 function Navbar() {
   let navigate = useNavigate();
@@ -82,13 +83,13 @@ function Navbar() {
 
   function getResults(keyword) {
 
-    let movieData = axios.get(process.env.REACT_APP_BASE_API + 'search/' + 'movie', {
+    let movieData = axios.get(Constants.API.search + Constants.CATEGORY.movie , {
       params: {
         api_key: process.env.REACT_APP_API_KEY,
         query: keyword
       }
     });
-    let tvData = axios.get(process.env.REACT_APP_BASE_API + 'search/' + 'tv', {
+    let tvData = axios.get(Constants.API.search + Constants.CATEGORY.tv , {
       params: {
         api_key: process.env.REACT_APP_API_KEY,
         query: keyword
@@ -120,7 +121,8 @@ function Navbar() {
                   }} className={styles.searchResult} key={result.id}>
                     <div>
                       <img className={styles.dropDownImg}
-                        src={result.backdrop_path ? (process.env.REACT_APP_BACKDROP_PATH_500 + result.backdrop_path) : MovieImg} alt="movie/tv" />
+                        src={result.backdrop_path ? (process.env.REACT_APP_BACKDROP_PATH_500 + result.backdrop_path) 
+                        : MovieImg} alt="movie/tv" />
 
                     </div>
                     <div style={{ textAlign: 'left' }}>
