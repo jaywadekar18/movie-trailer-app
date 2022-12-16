@@ -9,19 +9,24 @@ function Search() {
   const [page, setPage] = useState(1);
   let { keyword } = useParams()
   // const [loading, setloading] = useState(false);
-  const { list, error, loading } = UseSearchResultsHook(query, page)
+  const { list, error, loading, hasMore } = UseSearchResultsHook(query, page)
   const observer = useRef();
   useEffect(() => {
     setQuery(keyword)
   }, [keyword])
 
+  useEffect(() => {
+
+    console.log('hasMore', hasMore);
+
+  }, [hasMore])
   const lastElementRef = useCallback(
     function (node) {
 
       if (loading) return
       if (observer.current) observer.current.disconnect()
       observer.current = new IntersectionObserver(entries => {
-        if (entries[0].isIntersecting) {
+        if (entries[0].isIntersecting && hasMore) {
           setPage(prevPage => prevPage + 1)
         }
       })
@@ -29,7 +34,7 @@ function Search() {
 
 
     },
-    [loading]
+    [loading, hasMore]
   )
   return (
     <main >

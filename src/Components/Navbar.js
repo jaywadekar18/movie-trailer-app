@@ -113,7 +113,10 @@ function Navbar() {
             {searchResults?.length > 0 && searchResults.slice(0, RESULT_COUNT_SHOWN).map((result, index) => {
               if (index + 1 == RESULT_COUNT_SHOWN)
                 return <div style={{ textAlign: 'center', backgroundColor: 'grey', borderRadius: 0 }}
-                  className={styles.searchResult} key="76786767787" onClick={() => { navigate(`/search/${keyword}`); setSearchResults([]) }}>Show more results</div>
+                  className={styles.searchResult} key="76786767787" onClick={() => {
+                    navigate(`/search/${keyword}`);
+                    setSearchResults([])
+                  }}>Show more results</div>
               else
                 return <div onClick={() => {
                   navigate(`/content-detail/${result.first_air_date === undefined ? 'movie' : 'tv'}/${result.id}`);
