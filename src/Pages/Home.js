@@ -427,7 +427,7 @@ function Home() {
     }
   ]
   return (
-    <div>
+    <div style={{overflowX:'hidden'}}>
     <ImageSlider images={data} dataSize={data.length}/>
       {contentList.map(content => {
         return <Slider content={content} key={content.id}/>

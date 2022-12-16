@@ -22,8 +22,6 @@
 .navLinks:hover {
   color: red;
   border-bottom: 5px solid blue;
-  /* transition-delay: 0.5s; */
-  /* border-color: blue; */
 }
 .dropdownContainer {
   position: relative;
@@ -46,23 +44,23 @@
   border-radius: 5px;
 }
 input {
-  /* width: 300px; */
+  width: 250px;
   border: none;
   border-bottom: 1px solid white;
   background: none;
   outline: none;
   color: white;
   font-size: 20px;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  transition: width 0.7s;
 }
 .dropDownImg {
   width: 150px;
   height: 100px;
 }
 
-.expandInput{
- width: 300px;
- transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+.expandInput {
+  width: 300px;
+  transition: width 0.7s;
 }
 @media screen and (max-width: 700px) {
   .heading {

@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react'
 import UseSearchResultsHook from '../Hooks/UseSearchResultsHook';
 import styles from '../styles/search.module.css';
-import Movie from '../Components/Movie';
+import Card from '../Components/Card';
 import { useParams } from 'react-router';
 import loader from '../images/loader.gif'
 function Search() {
@@ -40,13 +40,13 @@ function Search() {
           list?.map((item, index) => {
             if (list.length === index + 1) {
               return <div ref={lastElementRef} key={item.id}>
-                <Movie key={list.id} movie={item} />
+                <Card key={list.id} content={item} />
               </div>
             }
             else {
               return <div key={item.id}>
                 {/* {item?.name ?? item?.title} */}
-                <Movie key={list.id} movie={item} />
+                <Card key={list.id} content={item} />
               </div>
             }
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from "axios";
-import Movie from '../Components/Movie';
+import Card from '../Components/Card';
 import styles from '../styles/movies.module.css'
 import * as Constants from '../api/endPoints'
 import loader from '../images/loader.gif'
@@ -44,7 +44,7 @@ function Movies() {
             <div className={styles.container}>
 
                 {movies?.length > 0 ? movies.map(movie =>
-                    <Movie key={movie.id} movie={movie} />
+                    <Card key={movie.id} content={movie} />
                 ) : <img src={loader} />}
 
 

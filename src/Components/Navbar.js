@@ -83,13 +83,13 @@ function Navbar() {
 
   function getResults(keyword) {
 
-    let movieData = axios.get(Constants.API.search + Constants.CATEGORY.movie , {
+    let movieData = axios.get(Constants.API.search + Constants.CATEGORY.movie, {
       params: {
         api_key: process.env.REACT_APP_API_KEY,
         query: keyword
       }
     });
-    let tvData = axios.get(Constants.API.search + Constants.CATEGORY.tv , {
+    let tvData = axios.get(Constants.API.search + Constants.CATEGORY.tv, {
       params: {
         api_key: process.env.REACT_APP_API_KEY,
         query: keyword
@@ -110,27 +110,27 @@ function Navbar() {
             onChange={(e) => { optimizedFn(e.target.value) }}
             placeholder="Search..." />
           <div className={styles.searchDropdown} ref={dropdownRef}>
-            {searchResults?.length > 0 && searchResults.slice(0, RESULT_COUNT_SHOWN).map((result,index) =>
-               {
-                if (index + 1 == RESULT_COUNT_SHOWN)
-                  return <div style={{textAlign:'center' ,backgroundColor:'grey' ,borderRadius:0}} className={styles.searchResult} key="76786767787" onClick={()=>{navigate(`/search/${keyword}`);setSearchResults([])}}>Show more results</div>
-                else
-                  return <div onClick={() => {
-                    navigate(`/content-detail/${result.first_air_date === undefined ? 'movie' : 'tv'}/${result.id}`);
-                    setSearchResults([])
-                  }} className={styles.searchResult} key={result.id}>
-                    <div>
-                      <img className={styles.dropDownImg}
-                        src={result.backdrop_path ? (process.env.REACT_APP_BACKDROP_PATH_500 + result.backdrop_path) 
+            {searchResults?.length > 0 && searchResults.slice(0, RESULT_COUNT_SHOWN).map((result, index) => {
+              if (index + 1 == RESULT_COUNT_SHOWN)
+                return <div style={{ textAlign: 'center', backgroundColor: 'grey', borderRadius: 0 }}
+                  className={styles.searchResult} key="76786767787" onClick={() => { navigate(`/search/${keyword}`); setSearchResults([]) }}>Show more results</div>
+              else
+                return <div onClick={() => {
+                  navigate(`/content-detail/${result.first_air_date === undefined ? 'movie' : 'tv'}/${result.id}`);
+                  setSearchResults([])
+                }} className={styles.searchResult} key={result.id}>
+                  <div>
+                    <img className={styles.dropDownImg}
+                      src={result.backdrop_path ? (process.env.REACT_APP_BACKDROP_PATH_500 + result.backdrop_path)
                         : MovieImg} alt="movie/tv" />
 
-                    </div>
-                    <div style={{ textAlign: 'left' }}>
-                      {result.name ?? result.title}
-                    </div>
                   </div>
+                  <div style={{ textAlign: 'left' }}>
+                    {result.name ?? result.title}
+                  </div>
+                </div>
 
-              }
+            }
             )}
           </div>
 

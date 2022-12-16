@@ -3,6 +3,7 @@ import styles from '../styles/card-slider.module.css'
 import { useNavigate } from 'react-router-dom';
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import * as Constants from '../api/endPoints'
+import Card from '../Components/Card'
 function CardSlider({ cardData }) {
     const [position, setPosition] = useState(0);
     const [disableRightNavigation, setDisableRightNavigation] = useState(false)
@@ -41,40 +42,33 @@ function CardSlider({ cardData }) {
     return (
         <div className={styles.mainContainer}>
 
-            <button className={styles.sliderButtonsLeft} disabled={position >= 0 ? true : false} onClick={leftClick}><FaChevronLeft fontSize="20px" /></button>
+            <button className={styles.sliderButtonsLeft} disabled={position >= 0 ? true : false} onClick={leftClick}>
+                <FaChevronLeft fontSize="20px" /></button>
             <div className={styles.cardContainer} style={{ transform: `translateX(${position}px)` }} >
                 {
                     cardData && cardData.map((card, index) => {
                         if (cardData.length === index + 1) {
+
+
                             return <div key={card.id} ref={lastElementRef}>
-                                <div className={styles.card}
-                                    onClick={() => navigate(`/content-detail/${card.first_air_date === undefined ? 'movie' : 'tv'}/${card.id}`)} >
-                                    <img className={styles.cardImage}
-                                        src={Constants.API.imageWeb + card.poster_path}
-                                        alt="image" />
-
-                                </div>
-
+                                <Card ref={lastElementRef} content={card} />
                             </div>
                         }
+
                         else {
-                            return (<div key={card.id}>
-                                <div className={styles.card}
-                                    onClick={() => navigate(`/content-detail/${card.first_air_date === undefined ? 'movie' : 'tv'}/${card.id}`)} >
-                                    <img className={styles.cardImage}
-                                        src={Constants.API.imageWeb + card.poster_path}
-                                        alt="image" />
 
-                                </div>
 
-                            </div>)
-                        }
+                            return<div key={card.id}>
+                                <Card content={card} />
+                            </div>
+                }
                     })
 
                 }
             </div>
 
-            <button className={styles.sliderButtonsRight} onClick={rightClick} disabled={disableRightNavigation}><FaChevronRight fontSize="20px" /> </button>
+            <button className={styles.sliderButtonsRight} onClick={rightClick} disabled={disableRightNavigation}>
+                <FaChevronRight fontSize="20px" /> </button>
 
 
 
