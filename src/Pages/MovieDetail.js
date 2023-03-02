@@ -43,8 +43,8 @@ function ContentDetail() {
                             (Constants.API.imageWeb + mediaData.backdrop_path) :
                             (Constants.API.imageMobile + mediaData.poster_path)})`
                 }}>
-          
-                <img src={Constants.API.imageWeb + mediaData?.poster_path} className={style.card} />
+
+                <img src={Constants.API.cardImageWeb + mediaData?.poster_path} className={style.card} />
                 <div className={style.contentData}>
                     <p className={style.title} >{mediaData.original_name ?? mediaData.original_title}</p>
                     {trailerId && <button className={style.trailerBtn} onClick={() => { setShowModal(true) }}>Watch trailer</button>}

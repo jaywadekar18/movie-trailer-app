@@ -21,6 +21,8 @@ export const API = {
     imageApi: 'https://image.tmdb.org/t/p/',
     search: 'https://api.themoviedb.org/3/search/',
     discover: 'https://api.themoviedb.org/3/discover/',
+    cardImageWeb: "https://image.tmdb.org/t/p/w400",
+    cardImageMobile: "https://image.tmdb.org/t/p/w300",
     imageWeb: 'https://image.tmdb.org/t/p/w1280',
     imageMobile: 'https://image.tmdb.org/t/p/w500'
 }

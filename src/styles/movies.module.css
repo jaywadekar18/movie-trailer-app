@@ -17,7 +17,7 @@
 }
 .pageBtnContainer {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 50px;
 }
 .pageBtnContainer button {
   margin: 0 10px;
@@ -25,4 +25,3 @@
   height: 25px;
   width: 40px;
 }
-

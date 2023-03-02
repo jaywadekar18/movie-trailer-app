@@ -5,6 +5,7 @@ import CardSlider from './CardSlider.js'
 import styles from '../styles/slider.module.css';
 import loader from '../images/loader.gif'
 import * as Constants from '../api/endPoints'
+import Card from './Card'
 function Slider({ content }) {
     const navigate = useNavigate();
     const [data, setData] = useState([]);
@@ -23,7 +24,7 @@ function Slider({ content }) {
         setData(data.results);
 
     }
-    
+
 
     return (
         <div>
@@ -34,13 +35,10 @@ function Slider({ content }) {
 
                     {
                         (data && data.length > 0) ? data?.map(content =>
-                            <div className={styles.card} onClick={() => {
-                                navigate(`/content-detail/${content.first_air_date === undefined ? 'movie' : 'tv'}/${content.id}`)
-                            }}>
+                            <div>
+                                <Card content={content} /></div>)
 
-                                <img className={styles.cardImage} src={Constants.API.imageWeb + content.poster_path} alt="" />
-                            </div>
-                        )
+
                             : <img src={loader} />
                     }
 

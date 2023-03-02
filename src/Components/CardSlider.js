@@ -54,14 +54,11 @@ function CardSlider({ cardData }) {
                                 <Card ref={lastElementRef} content={card} />
                             </div>
                         }
-
                         else {
-
-
-                            return<div key={card.id}>
+                            return <div key={card.id}>
                                 <Card content={card} />
                             </div>
-                }
+                        }
                     })
 
                 }
